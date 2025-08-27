@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Moje Streaming - Fun Short Videos{% endblock %}</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.replit.com/agent/bootstrap-agent-dark-theme.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link href="{{ url_for('static', filename='css/custom.css') }}" rel="stylesheet">
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="{% block description %}Moje Streaming - Your space for short, fun, and creative videos. Create, share, and discover trending content from dance and comedy to travel and pets.{% endblock %}">
+    <meta name="keywords" content="short videos, streaming, social media, video sharing, entertainment, mobile app">
+    <meta name="author" content="Moje Streaming">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="{% block og_title %}Moje Streaming - Fun Short Videos{% endblock %}">
+    <meta property="og:description" content="{% block og_description %}Your space for short, fun, and creative videos. Create, share, and discover trending content.{% endblock %}">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="{{ request.url }}">
+    
+    {% block head %}{% endblock %}
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="{{ url_for('index') }}">
+                <i class="fas fa-video me-2 text-primary"></i>
+                <strong>Moje Streaming</strong>
+            </a>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link {% if request.endpoint == 'index' %}active{% endif %}" href="{{ url_for('index') }}">
+                            <i class="fas fa-home me-1"></i>Home
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {% if request.endpoint == 'csae_policy' %}active{% endif %}" href="{{ url_for('csae_policy') }}">
+                            <i class="fas fa-shield-alt me-1"></i>CSAE Policy
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {% if request.endpoint == 'privacy_policy' %}active{% endif %}" href="{{ url_for('privacy_policy') }}">
+                            <i class="fas fa-user-shield me-1"></i>Privacy Policy
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="btn btn-primary ms-2" href="https://play.google.com/store/apps/details?id=moje.reel.stream" target="_blank">
+                            <i class="fab fa-google-play me-1"></i>Download App
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-dark py-5 mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5><i class="fas fa-video me-2 text-primary"></i>Moje Streaming</h5>
+                    <p class="text-muted">Your space for short, fun, and creative videos. From dance and comedy to travel and pets, there's something for everyone.</p>
+                </div>
+                <div class="col-md-3">
+                    <h6>Quick Links</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="{{ url_for('index') }}" class="text-decoration-none">Home</a></li>
+                        <li><a href="{{ url_for('csae_policy') }}" class="text-decoration-none">CSAE Policy</a></li>
+                        <li><a href="{{ url_for('privacy_policy') }}" class="text-decoration-none">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h6>Contact</h6>
+                    <p class="text-muted mb-1">
+                        <i class="fas fa-envelope me-2"></i>
+                        <a href="mailto:mojestreaming@gmail.com" class="text-decoration-none">mojestreaming@gmail.com</a>
+                    </p>
+                    <p class="text-muted">
+                        <i class="fas fa-globe me-2"></i>India
+                    </p>
+                </div>
+            </div>
+            <hr class="my-4">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <p class="text-muted mb-0">&copy; 2025 Moje Streaming. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-end">
+                    <a href="https://play.google.com/store/apps/details?id=moje.reel.stream" target="_blank" class="btn btn-outline-primary">
+                        <i class="fab fa-google-play me-2"></i>Download on Google Play
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Custom JS -->
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    
+    {% block scripts %}{% endblock %}
+</body>
+</html>
